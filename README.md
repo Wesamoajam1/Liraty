@@ -1,2 +1,3 @@
-# Liraati
-Liraati – Syrian currency converter, exchange rates, gold and silver tracker.
+# ليرتي
+
+ليرتي — محول العملات السورية، أسعار الصرف، ومتابعة أسعار الذهب والفضة.
