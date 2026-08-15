@@ -324,12 +324,83 @@
   */
 
   const rates = {
-    usd: 10000,
-    eur: 11500,
-    try: 285,
-    sar: 2665,
-    aed: 2720
-  };
+  usd: 10000,
+  eur: 11500,
+  try: 285,
+  sar: 2665,
+  aed: 2720
+};
+
+// جلب أسعار السوق الحقيقية
+async function loadRates() {
+  try {
+    const response = await fetch(
+      "https://lirascope.syria-cloud.sy/api/v1/rates/latest?currencies=USD,EUR,TRY,SAR,AED&lang=ar"
+    );
+
+    if (!response.ok) {
+      throw new Error("فشل الاتصال بمصدر الأسعار");
+    }
+
+    const data = await response.json();
+
+    // نستخدم أسعار السوق، وإن لم تتوفر نستخدم الأسعار الفعالة
+    const source =
+      data.marketRates ||
+      data.effectiveRates ||
+      [];
+
+    source.forEach(item => {
+      const key = item.currency.toLowerCase();
+
+      if (rates.hasOwnProperty(key) && typeof item.mid === "number") {
+        rates[key] = item.mid;
+      }
+    });
+
+    // حفظ آخر أسعار ناجحة للعمل دون إنترنت
+    localStorage.setItem("liratyRates", JSON.stringify(rates));
+
+    // تحديث الأسعار الظاهرة في الصفحة
+    document.getElementById("usdRate").textContent =
+      rates.usd.toLocaleString("ar-SY") + " ل.س";
+
+    document.getElementById("eurRate").textContent =
+      rates.eur.toLocaleString("ar-SY") + " ل.س";
+
+    document.getElementById("tryRate").textContent =
+      rates.try.toLocaleString("ar-SY") + " ل.س";
+
+    document.getElementById("sarRate").textContent =
+      rates.sar.toLocaleString("ar-SY") + " ل.س";
+
+    convert();
+
+  } catch (error) {
+
+    // إذا لم يوجد إنترنت، استخدم آخر أسعار محفوظة
+    const savedRates = localStorage.getItem("liratyRates");
+
+    if (savedRates) {
+      Object.assign(rates, JSON.parse(savedRates));
+
+      document.getElementById("usdRate").textContent =
+        rates.usd.toLocaleString("ar-SY") + " ل.س";
+
+      document.getElementById("eurRate").textContent =
+        rates.eur.toLocaleString("ar-SY") + " ل.س";
+
+      document.getElementById("tryRate").textContent =
+        rates.try.toLocaleString("ar-SY") + " ل.س";
+
+      document.getElementById("sarRate").textContent =
+        rates.sar.toLocaleString("ar-SY") + " ل.س";
+
+      convert();
+    }
+  }
+}
+  loadRates();
 
   function convert() {
 
