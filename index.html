@@ -71,16 +71,127 @@
 
       padding-bottom: 90px;
     }
+/* ==============================
+   هوية LIRATY
+   ============================== */
 
+.app-header {
+  padding: 22px 18px 16px;
+  text-align: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.brand-name {
+  text-align: right;
+  line-height: 1.05;
+}
+
+.brand-ar {
+  font-size: 28px;
+  font-weight: 800;
+  color: #202124;
+}
+
+.brand-en {
+  margin-top: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #777;
+  direction: ltr;
+}
+
+.header-subtitle {
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+}
+
+/* علم سوريا */
+.syrian-flag {
+  position: relative;
+  width: 58px;
+  height: 38px;
+  border-radius: 7px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+}
+
+.syrian-flag > span:first-child {
+  flex: 1;
+  background: #000;
+}
+
+.syrian-flag > span:last-child {
+  flex: 1;
+  background: #fff;
+}
+
+.syrian-flag::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 50%;
+  background: #ce1126;
+  z-index: 0;
+}
+
+.syrian-flag .stars {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  transform: translateY(0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #fff;
+  font-size: 9px;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  }
   </style>
 </head>
 
 <body>
 
   <div id="app">
+<header class="app-header">
 
-    <!-- محتوى Liraty سيُبنى هنا -->
+  <div class="brand">
 
+    <div class="syrian-flag" aria-label="علم سوريا">
+      <span></span>
+      <span class="stars">★ ★ ★</span>
+      <span></span>
+    </div>
+
+    <div class="brand-name">
+      <div class="brand-ar">ليرتي</div>
+      <div class="brand-en">Liraty</div>
+    </div>
+
+  </div>
+
+  <div class="header-subtitle">
+    أسعار العملات السورية
+  </div>
+
+</header>
   </div>
 
   <script>
