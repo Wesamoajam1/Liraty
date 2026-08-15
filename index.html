@@ -190,6 +190,87 @@
   justify-self: center;
     width: 220px;
       }
+      .converter-input {
+  margin-top: 15px;
+}
+
+.converter-input label,
+.currency-section label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: #333;
+}
+
+#amount {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+  border: 2px solid #e1e1e1;
+  border-radius: 14px;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  outline: none;
+  background: #fff;
+}
+
+#amount:focus {
+  border-color: #d82027;
+}
+
+.quick-amounts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.quick-amounts button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 5px;
+  background: #f3f3f3;
+  color: #333;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.quick-amounts button:active {
+  transform: scale(0.97);
+}
+
+.currency-section {
+  margin-top: 20px;
+}
+
+.currency-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 9px;
+}
+
+.currency-btn {
+  border: 2px solid #e5e5e5;
+  background: #fff;
+  color: #333;
+  border-radius: 12px;
+  padding: 12px 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.currency-btn.active {
+  border-color: #d82027;
+  background: #d82027;
+  color: #fff;
+}
+
+.currency-btn:active {
+  transform: scale(0.97);
+}
   </style>
 </head>
 
@@ -216,22 +297,66 @@
 
       <div class="card-title">محول العملات</div>
 
-      <label for="amount">المبلغ</label>
-      <input
-        id="amount"
-        type="number"
-        value="100000"
-        oninput="convert()"
-      >
+    <div class="converter-input">
 
-      <label for="currency">العملة</label>
-      <select id="currency" onchange="convert()">
-        <option value="usd">الدولار الأمريكي USD</option>
-        <option value="eur">اليورو EUR</option>
-        <option value="try">الليرة التركية TRY</option>
-        <option value="sar">الريال السعودي SAR</option>
-        <option value="aed">الدرهم الإماراتي AED</option>
-      </select>
+  <label for="amount">أدخل المبلغ</label>
+
+  <input
+    id="amount"
+    type="number"
+    value="100000"
+    inputmode="decimal"
+    placeholder="أدخل المبلغ"
+    oninput="convert()"
+  >
+
+  <div class="quick-amounts">
+    <button type="button" onclick="setAmount(1000)">1,000</button>
+    <button type="button" onclick="setAmount(10000)">10,000</button>
+    <button type="button" onclick="setAmount(100000)">100,000</button>
+    <button type="button" onclick="setAmount(1000000)">1,000,000</button>
+  </div>
+
+</div>
+
+<div class="currency-section">
+
+  <label>اختر العملة</label>
+
+  <div class="currency-buttons">
+
+    <button type="button" class="currency-btn active" onclick="setCurrency('usd', this)">
+      🇺🇸 USD
+    </button>
+
+    <button type="button" class="currency-btn" onclick="setCurrency('eur', this)">
+      🇪🇺 EUR
+    </button>
+
+    <button type="button" class="currency-btn" onclick="setCurrency('try', this)">
+      🇹🇷 TRY
+    </button>
+
+    <button type="button" class="currency-btn" onclick="setCurrency('sar', this)">
+      🇸🇦 SAR
+    </button>
+
+    <button type="button" class="currency-btn" onclick="setCurrency('aed', this)">
+      🇦🇪 AED
+    </button>
+
+  </div>
+
+  <!-- القائمة الأصلية تبقى موجودة للحفاظ على عمل convert() -->
+  <select id="currency" onchange="convert()" hidden>
+    <option value="usd">الدولار الأمريكي USD</option>
+    <option value="eur">اليورو EUR</option>
+    <option value="try">الليرة التركية TRY</option>
+    <option value="sar">الريال السعودي SAR</option>
+    <option value="aed">الدرهم الإماراتي AED</option>
+  </select>
+
+</div>
 
       <div class="result">
         <small>القيمة التقريبية بالليرة السورية</small>
@@ -431,7 +556,22 @@ async function loadRates() {
     rates.sar.toLocaleString() + " ل.س";
 
   convert();
+function setAmount(value) {
+  document.getElementById("amount").value = value;
+  convert();
+}
 
+function setCurrency(currency, button) {
+  document.getElementById("currency").value = currency;
+
+  document.querySelectorAll(".currency-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  button.classList.add("active");
+
+  convert();
+        }
 </script>
 
 </body>
