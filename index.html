@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ليرتي | محول العملات السورية</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f6f8;
+      color: #18202a;
+    }
+
+    .app {
+      max-width: 480px;
+      margin: auto;
+      min-height: 100vh;
+      background: #ffffff;
+    }
+
+    header {
+      padding: 22px 20px 18px;
+      background: linear-gradient(135deg, #0d5c38, #16804d);
+      color: white;
+      border-radius: 0 0 28px 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .flag {
+      width: 48px;
+      height: 32px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.4);
+      position: relative;
+      background:
+        linear-gradient(
+          to bottom,
+          #14804a 0 33%,
+          white 33% 66%,
+          #111 66% 100%
+        );
+    }
+
+    .stars {
+      position: absolute;
+      top: 8px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      color: #d82027;
+      font-size: 11px;
+      letter-spacing: 3px;
+    }
+
+    .brand h1 {
+      font-size: 28px;
+    }
+
+    .brand p {
+      margin-top: 4px;
+      opacity: .85;
+      font-size: 13px;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 18px;
+      margin-bottom: 16px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.07);
+      border: 1px solid #edf0f2;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 14px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      color: #68717c;
+      margin-bottom: 7px;
+    }
+
+    input, select {
+      width: 100%;
+      border: 1px solid #dce1e6;
+      border-radius: 13px;
+      padding: 14px;
+      font-size: 17px;
+      outline: none;
+      background: #fafbfc;
+      margin-bottom: 14px;
+    }
+
+    input:focus, select:focus {
+      border-color: #16804d;
+    }
+
+    .result {
+      background: #f0f8f4;
+      border-radius: 16px;
+      padding: 17px;
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    .result small {
+      color: #607069;
+    }
+
+    .result strong {
+      display: block;
+      margin-top: 7px;
+      font-size: 28px;
+      color: #0d5c38;
+    }
+
+    .rates {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .rate {
+      padding: 14px;
+      background: #f8f9fa;
+      border-radius: 14px;
+    }
+
+    .rate span {
+      display: block;
+      color: #68717c;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .rate strong {
+      font-size: 18px;
+    }
+
+    .offline {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px;
+      border-radius: 14px;
+      background: #fff8e8;
+      color: #795b15;
+      font-size: 13px;
+    }
+
+    footer {
+      text-align: center;
+      color: #8a929b;
+      font-size: 12px;
+      padding: 20px;
+    }
+
+    .update {
+      text-align: center;
+      color: #7a838d;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <header>
+    <div class="brand">
+      <div class="flag">
+        <div class="stars">★ ★ ★</div>
+      </div>
+
+      <div>
+        <h1>ليرتي</h1>
+        <p>أسعار العملات السورية والعالمية</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
+
+    <section class="card">
+
+      <div class="card-title">محول العملات</div>
+
+      <label for="amount">المبلغ</label>
+      <input
+        id="amount"
+        type="number"
+        value="100000"
+        oninput="convert()"
+      >
+
+      <label for="currency">العملة</label>
+      <select id="currency" onchange="convert()">
+        <option value="usd">الدولار الأمريكي USD</option>
+        <option value="eur">اليورو EUR</option>
+        <option value="try">الليرة التركية TRY</option>
+        <option value="sar">الريال السعودي SAR</option>
+        <option value="aed">الدرهم الإماراتي AED</option>
+      </select>
+
+      <div class="result">
+        <small>القيمة التقريبية بالليرة السورية</small>
+        <strong id="result">0 ل.س</strong>
+      </div>
+
+      <div class="update">
+        أسعار تجريبية — سيتم ربطها بمصدر أسعار مباشر لاحقاً
+      </div>
+
+    </section>
+
+    <section class="card">
+
+      <div class="card-title">أسعار العملات العالمية</div>
+
+      <div class="rates">
+
+        <div class="rate">
+          <span>الدولار USD</span>
+          <strong id="usdRate">—</strong>
+        </div>
+
+        <div class="rate">
+          <span>اليورو EUR</span>
+          <strong id="eurRate">—</strong>
+        </div>
+
+        <div class="rate">
+          <span>الليرة التركية TRY</span>
+          <strong id="tryRate">—</strong>
+        </div>
+
+        <div class="rate">
+          <span>الريال السعودي SAR</span>
+          <strong id="sarRate">—</strong>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="card">
+
+      <div class="card-title">الذهب والفضة</div>
+
+      <div class="rates">
+
+        <div class="rate">
+          <span>الذهب</span>
+          <strong>قريباً</strong>
+        </div>
+
+        <div class="rate">
+          <span>الفضة</span>
+          <strong>قريباً</strong>
+        </div>
+
+      </div>
+
+    </section>
+
+    <div class="offline">
+      ✓ يعمل بشكل أساسي دون اتصال — آخر أسعار محفوظة متاحة للمقارنة.
+    </div>
+
+  </main>
+
+  <footer>
+    ليرتي © 2026
+    <br>
+    محول العملات السورية بطريقة بسيطة وسريعة
+  </footer>
+
+</div>
+
+<script>
+
+  /*
+    أسعار تجريبية مؤقتة.
+    لاحقاً سنستبدلها بمصدر أسعار حقيقي
+    ونضيف نظام التحديث والحفظ دون اتصال.
+  */
+
+  const rates = {
+    usd: 10000,
+    eur: 11500,
+    try: 285,
+    sar: 2665,
+    aed: 2720
+  };
+
+  function convert() {
+
+    const amount = Number(
+      document.getElementById("amount").value
+    );
+
+    const currency =
+      document.getElementById("currency").value;
+
+    const value =
+      amount * rates[currency];
+
+    document.getElementById("result").textContent =
+      value.toLocaleString("ar-SY") + " ل.س";
+  }
+
+  document.getElementById("usdRate").textContent =
+    rates.usd.toLocaleString() + " ل.س";
+
+  document.getElementById("eurRate").textContent =
+    rates.eur.toLocaleString() + " ل.س";
+
+  document.getElementById("tryRate").textContent =
+    rates.try.toLocaleString() + " ل.س";
+
+  document.getElementById("sarRate").textContent =
+    rates.sar.toLocaleString() + " ل.س";
+
+  convert();
+
+</script>
+
+</body>
+      </html>
