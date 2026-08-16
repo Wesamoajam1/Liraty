@@ -430,13 +430,308 @@ color: var(--text);
     font-size: 11px;
   }
 }
+    /* ==============================
+   الهيكل الرئيسي
+   ============================== */
+
+.dashboard-layout {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 12px 30px;
+
+  display: grid;
+  grid-template-columns: 230px minmax(0, 760px) 230px;
+  gap: 12px;
+
+  align-items: start;
+}
+
+
+/* ==============================
+   العمود الأوسط
+   ============================== */
+
+.main-column {
+  min-width: 0;
+}
+
+
+/* ==============================
+   الأعمدة الجانبية
+   ============================== */
+
+.left-sidebar,
+.right-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+/* ==============================
+   البطاقات الجانبية
+   ============================== */
+
+.side-card {
+  padding: 15px;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.side-card h3 {
+  margin-bottom: 10px;
+
+  font-size: 17px;
+  font-weight: 800;
+
+  color: var(--accent);
+}
+
+.side-card p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.side-card ul {
+  list-style: none;
+}
+
+.side-card li {
+  position: relative;
+
+  padding: 6px 14px 6px 0;
+
+  font-size: 11px;
+  line-height: 1.5;
+
+  color: var(--text-secondary);
+}
+
+.side-card li::before {
+  content: "";
+
+  position: absolute;
+  right: 0;
+  top: 13px;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+
+/* ==============================
+   عناصر التنبيهات والسوق
+   ============================== */
+
+.alert-item,
+.market-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 9px 4px;
+
+  border-bottom: 1px solid var(--border);
+
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.alert-item:last-of-type,
+.market-item:last-of-type {
+  border-bottom: none;
+}
+
+.alert-item strong,
+.market-item strong {
+  color: var(--accent);
+  font-size: 12px;
+  direction: ltr;
+}
+
+
+/* ==============================
+   أزرار الأعمدة الجانبية
+   ============================== */
+
+.side-button {
+  width: 100%;
+  margin-top: 12px;
+  padding: 9px 10px;
+
+  background: transparent;
+
+  border: 1px solid #7c2bbd;
+  border-radius: 10px;
+
+  color: #7c2bbd;
+
+  font-size: 12px;
+}
+
+
+/* ==============================
+   الوضع الداكن
+   ============================== */
+
+body.dark .side-card {
+  box-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.22);
+}
+
+
+/* ==============================
+   الشاشات المتوسطة
+   ============================== */
+
+@media (max-width: 1050px) {
+
+  .dashboard-layout {
+    grid-template-columns: 190px minmax(0, 1fr) 190px;
+    gap: 8px;
+    padding: 0 8px 25px;
+  }
+
+  .side-card {
+    padding: 12px;
+  }
+
+  .side-card h3 {
+    font-size: 15px;
+  }
+
+}
+
+
+/* ==============================
+   الهاتف
+   ============================== */
+
+@media (max-width: 760px) {
+
+  .dashboard-layout {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    padding: 0 0 25px;
+  }
+
+  .main-column {
+    width: 100%;
+    order: 1;
+  }
+
+  .left-sidebar {
+    width: 100%;
+    order: 2;
+  }
+
+  .right-sidebar {
+    width: 100%;
+    order: 3;
+  }
+
+  .left-sidebar,
+  .right-sidebar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+
+    padding: 0 8px;
+  }
+
+  .side-card {
+    width: 100%;
+  }
+
+}
+
+
+/* ==============================
+   الهواتف الصغيرة
+   ============================== */
+
+@media (max-width: 480px) {
+
+  .left-sidebar,
+  .right-sidebar {
+    grid-template-columns: 1fr;
+  }
+
+}
   </style>
 </head>
 
 <body>
 
   <div id="app">
-<header class="app-header">
+
+  <div class="dashboard-layout">
+
+    <!-- ==============================
+         العمود الأيسر
+         ============================== -->
+
+    <aside class="left-sidebar">
+
+      <div class="side-card">
+        <h3>لماذا ليرتي؟</h3>
+        <p>
+          تطبيق ذكي لتحويل العملات
+          وأسعار الصرف في سوريا
+          بطريقة بسيطة وسريعة.
+        </p>
+      </div>
+
+      <div class="side-card">
+        <h3>أهم الميزات</h3>
+
+        <ul>
+          <li>مقارنة الليرة القديمة والجديدة</li>
+          <li>تحويلات لحظية للأسعار</li>
+          <li>أسعار العملات العالمية</li>
+          <li>تنبيهات الأسعار</li>
+          <li>يعمل بدون إنترنت</li>
+        </ul>
+      </div>
+
+      <div class="side-card">
+        <h3>التنبيهات</h3>
+        <p>
+          عيّن تنبيهات للأسعار
+          وابقَ على اطلاع دائم.
+        </p>
+      </div>
+
+      <div class="side-card">
+        <h3>المصادر</h3>
+        <p>
+          أسعار العملات والمعادن
+          من مصادر موثوقة.
+        </p>
+      </div>
+
+    </aside>
+
+
+    <!-- ==============================
+         العمود الأوسط
+         ============================== -->
+
+    <main class="main-column">
+
+      <header class="app-header">
 
   <div class="brand">
 
@@ -727,6 +1022,77 @@ color: var(--text);
       </div>
 
     </section>
+      </section>
+
+    </main>
+
+
+    <!-- ==============================
+         العمود الأيمن
+         ============================== -->
+
+    <aside class="right-sidebar">
+
+      <div class="side-card">
+        <h3>التنبيهات</h3>
+
+        <div class="alert-item">
+          <span>🇺🇸 دولار أمريكي</span>
+          <strong>13,770</strong>
+        </div>
+
+        <div class="alert-item">
+          <span>🪙 الذهب 24 قيراط</span>
+          <strong>1,060,000</strong>
+        </div>
+
+        <div class="alert-item">
+          <span>🇪🇺 يورو</span>
+          <strong>15,210</strong>
+        </div>
+
+        <button class="side-button">
+          ＋ إضافة تنبيه جديد
+        </button>
+      </div>
+
+
+      <div class="side-card">
+        <h3>نبض السوق</h3>
+
+        <div class="market-item">
+          <span>🇺🇸 USD</span>
+          <strong>13,770</strong>
+        </div>
+
+        <div class="market-item">
+          <span>🇪🇺 EUR</span>
+          <strong>15,210</strong>
+        </div>
+
+        <div class="market-item">
+          <span>🇹🇷 TRY</span>
+          <strong>415.90</strong>
+        </div>
+
+        <div class="market-item">
+          <span>🇬🇧 GBP</span>
+          <strong>17,925</strong>
+        </div>
+
+        <div class="market-item">
+          <span>🇯🇵 JPY</span>
+          <strong>0.0925</strong>
+        </div>
+
+        <button class="side-button">
+          عرض جميع العملات
+        </button>
+
+      </div>
+
+    </aside>
+
   </div>
 
   <script>
