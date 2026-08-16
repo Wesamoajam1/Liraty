@@ -704,6 +704,90 @@ body.dark .side-card {
 .right-sidebar {
   display: none !important;
 }
+    /* ===== القائمة السفلية الرئيسية ===== */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 72px;
+    background: rgba(255, 255, 255, 0.96);
+    border-top: 1px solid #e5e7eb;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    direction: rtl;
+    z-index: 9999;
+    padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+}
+
+.bottom-nav-item {
+    flex: 1;
+    height: 60px;
+    border: 0;
+    background: transparent;
+    color: #6b7280;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-family: inherit;
+    font-size: 11px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.bottom-nav-item .nav-icon {
+    font-size: 21px;
+    line-height: 1;
+}
+
+.bottom-nav-item.active {
+    color: #238b57;
+    font-weight: 700;
+}
+
+.bottom-nav-item.active .nav-icon {
+    transform: translateY(-1px);
+}
+
+.bottom-nav-home {
+    position: relative;
+    margin-top: -22px;
+}
+
+.bottom-nav-home .nav-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: #238b57;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid white;
+    box-shadow: 0 4px 14px rgba(35, 139, 87, 0.30);
+}
+
+.bottom-nav-home.active .nav-icon {
+    background: #1d7549;
+}
+
+body {
+    padding-bottom: 82px;
+}
+
+@media (min-width: 768px) {
+    .bottom-nav {
+        max-width: 560px;
+        right: 50%;
+        left: auto;
+        transform: translateX(50%);
+        border-radius: 18px 18px 0 0;
+    }
+  }
   </style>
 </head>
 
@@ -1015,7 +1099,34 @@ body.dark .side-card {
     </main>
     
   </div>
+<nav class="bottom-nav" aria-label="القائمة السفلية">
 
+  <a href="#market" class="bottom-nav-item">
+    <span class="nav-icon">📈</span>
+    <span class="nav-label">نبض السوق</span>
+  </a>
+
+  <a href="#currencies" class="bottom-nav-item">
+    <span class="nav-icon">💱</span>
+    <span class="nav-label">العملات</span>
+  </a>
+
+  <a href="#home" class="bottom-nav-item bottom-nav-home active">
+    <span class="nav-icon">⌂</span>
+    <span class="nav-label">الرئيسية</span>
+  </a>
+
+  <a href="#tools" class="bottom-nav-item">
+    <span class="nav-icon">🛠</span>
+    <span class="nav-label">الأدوات</span>
+  </a>
+
+  <a href="#history" class="bottom-nav-item">
+    <span class="nav-icon">🕘</span>
+    <span class="nav-label">السجل</span>
+  </a>
+
+</nav>
   <script>
 
     /* ========================================
