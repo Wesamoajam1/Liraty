@@ -149,6 +149,287 @@ color: var(--text);
   width: 100%;
   height: 100%;
 }
+    /* ==============================
+   محول العملات
+   ============================== */
+
+.converter-card {
+  width: 100%;
+  max-width: 760px;
+  margin: 8px auto 0;
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.converter-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.converter-title h2 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.update-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.update-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #18a957;
+  flex-shrink: 0;
+}
+
+.converter-main {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.amount-box,
+.currency-box {
+  min-height: 118px;
+  background: var(--surface-2, #f9fafb);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+}
+
+.amount-box {
+  padding: 14px;
+}
+
+.amount-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.amount-value {
+  font-size: 25px;
+  font-weight: 500;
+  color: var(--text);
+  direction: ltr;
+  text-align: right;
+}
+
+.amount-caption {
+  margin-top: 5px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.currency-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px;
+}
+
+.currency-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.currency-flag {
+  width: 42px;
+  height: 30px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.currency-flag svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.currency-name {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 3px;
+}
+
+.currency-code {
+  font-size: 21px;
+  color: var(--text);
+  direction: ltr;
+}
+
+.currency-arrow {
+  font-size: 23px;
+  color: var(--text-secondary);
+}
+
+.swap-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 52px;
+  height: 52px;
+  border: 1px solid #7c2bbd;
+  border-radius: 50%;
+  background: var(--surface);
+  color: #7c2bbd;
+  font-size: 27px;
+  line-height: 1;
+  z-index: 2;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.swap-button:hover {
+  background: var(--surface-2, #f9fafb);
+}
+
+.converter-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr;
+  margin-top: 12px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.stat-box {
+  min-height: 76px;
+  padding: 10px 12px;
+  border-left: 1px solid var(--border);
+}
+
+.stat-box:last-child {
+  border-left: none;
+}
+
+.stat-label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+  direction: ltr;
+}
+
+.stat-value.up {
+  color: #18a957;
+}
+
+.mini-chart {
+  display: flex;
+  align-items: center;
+  height: 30px;
+}
+
+.mini-chart svg {
+  width: 100%;
+  height: 30px;
+}
+
+.converter-note {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 520px) {
+
+  .converter-card {
+    margin-top: 6px;
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .converter-title h2 {
+    font-size: 18px;
+  }
+
+  .converter-main {
+    gap: 8px;
+  }
+
+  .amount-box,
+  .currency-box {
+    min-height: 112px;
+  }
+
+  .amount-box {
+    padding: 12px;
+  }
+
+  .amount-value {
+    font-size: 22px;
+  }
+
+  .currency-box {
+    padding: 12px 10px;
+  }
+
+  .currency-flag {
+    width: 38px;
+    height: 27px;
+  }
+
+  .currency-info {
+    gap: 7px;
+  }
+
+  .currency-name {
+    font-size: 10px;
+  }
+
+  .currency-code {
+    font-size: 19px;
+  }
+
+  .swap-button {
+    width: 46px;
+    height: 46px;
+    font-size: 24px;
+  }
+
+  .converter-stats {
+    grid-template-columns: 1fr 1fr 1.1fr;
+  }
+
+  .stat-box {
+    padding: 9px 7px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+  }
+
+  .stat-value {
+    font-size: 15px;
+  }
+
+  .converter-note {
+    font-size: 11px;
+  }
+}
   </style>
 </head>
 
@@ -203,6 +484,249 @@ color: var(--text);
   </div>
 
 </header>
+        <!-- ==============================
+         محول العملات
+         ============================== -->
+
+    <section class="converter-card">
+
+      <div class="converter-title">
+        <h2>محول العملات</h2>
+
+        <div class="update-status">
+          <span class="update-dot"></span>
+          آخر تحديث: 30 ثانية
+        </div>
+      </div>
+
+      <div class="converter-main">
+
+        <!-- المبلغ من -->
+        <div class="amount-box">
+
+          <span class="amount-label">من</span>
+
+          <div class="amount-value">100,000</div>
+
+          <div class="amount-caption">
+            مئة ألف
+          </div>
+
+        </div>
+
+        <!-- العملة من -->
+        <div class="currency-box">
+
+          <div class="currency-info">
+
+            <div class="currency-flag">
+              <svg viewBox="0 0 150 100" aria-label="الليرة السورية">
+
+                <rect
+                  x="0"
+                  y="0"
+                  width="150"
+                  height="33.333"
+                  fill="#1F8B4C"
+                />
+
+                <rect
+                  x="0"
+                  y="33.333"
+                  width="150"
+                  height="33.333"
+                  fill="#FFFFFF"
+                />
+
+                <rect
+                  x="0"
+                  y="66.666"
+                  width="150"
+                  height="33.334"
+                  fill="#000000"
+                />
+
+                <polygon
+                  fill="#CE1126"
+                  points="45,38 47.8,46.1 56.4,46.1 49.4,51.1 52.1,59.2 45,54.2 37.9,59.2 40.6,51.1 33.6,46.1 42.2,46.1"
+                />
+
+                <polygon
+                  fill="#CE1126"
+                  points="75,38 77.8,46.1 86.4,46.1 79.4,51.1 82.1,59.2 75,54.2 67.9,59.2 70.6,51.1 63.6,46.1 72.2,46.1"
+                />
+
+                <polygon
+                  fill="#CE1126"
+                  points="105,38 107.8,46.1 116.4,46.1 109.4,51.1 112.1,59.2 105,54.2 97.9,59.2 100.6,51.1 93.6,46.1 102.2,46.1"
+                />
+
+              </svg>
+            </div>
+
+            <div>
+              <div class="currency-name">
+                الليرة السورية القديمة
+              </div>
+
+              <div class="currency-code">
+                SYP
+              </div>
+            </div>
+
+          </div>
+
+          <div class="currency-arrow">⌄</div>
+
+        </div>
+
+        <!-- زر التبديل -->
+        <button
+          class="swap-button"
+          type="button"
+          aria-label="تبديل العملات"
+        >
+          ⇅
+        </button>
+
+        <!-- المبلغ إلى -->
+        <div class="amount-box">
+
+          <span class="amount-label">إلى</span>
+
+          <div class="amount-value">131,500</div>
+
+          <div class="amount-caption">
+            مئة وواحد وثلاثون ألف وخمسمئة
+          </div>
+
+        </div>
+
+        <!-- العملة إلى -->
+        <div class="currency-box">
+
+          <div class="currency-info">
+
+            <div class="currency-flag">
+              <svg viewBox="0 0 150 100" aria-label="الليرة السورية">
+
+                <rect
+                  x="0"
+                  y="0"
+                  width="150"
+                  height="33.333"
+                  fill="#1F8B4C"
+                />
+
+                <rect
+                  x="0"
+                  y="33.333"
+                  width="150"
+                  height="33.333"
+                  fill="#FFFFFF"
+                />
+
+                <rect
+                  x="0"
+                  y="66.666"
+                  width="150"
+                  height="33.334"
+                  fill="#000000"
+                />
+
+                <polygon
+                  fill="#CE1126"
+                  points="45,38 47.8,46.1 56.4,46.1 49.4,51.1 52.1,59.2 45,54.2 37.9,59.2 40.6,51.1 33.6,46.1 42.2,46.1"
+                />
+
+                <polygon
+                  fill="#CE1126"
+                  points="75,38 77.8,46.1 86.4,46.1 79.4,51.1 82.1,59.2 75,54.2 67.9,59.2 70.6,51.1 63.6,46.1 72.2,46.1"
+                />
+
+                <polygon
+                  fill="#CE1126"
+                  points="105,38 107.8,46.1 116.4,46.1 109.4,51.1 112.1,59.2 105,54.2 97.9,59.2 100.6,51.1 93.6,46.1 102.2,46.1"
+                />
+
+              </svg>
+            </div>
+
+            <div>
+              <div class="currency-name">
+                الليرة السورية الجديدة
+              </div>
+
+              <div class="currency-code">
+                SYP
+              </div>
+            </div>
+
+          </div>
+
+          <div class="currency-arrow">⌄</div>
+
+        </div>
+
+      </div>
+
+      <!-- الإحصائيات -->
+      <div class="converter-stats">
+
+        <div class="stat-box">
+
+          <span class="stat-label">الفرق</span>
+
+          <span class="stat-value">
+            31,500
+          </span>
+
+        </div>
+
+        <div class="stat-box">
+
+          <span class="stat-label">النسبة</span>
+
+          <span class="stat-value up">
+            +31.50% ↗
+          </span>
+
+        </div>
+
+        <div class="stat-box">
+
+          <span class="stat-label">آخر 7 أيام</span>
+
+          <div class="mini-chart">
+
+            <svg
+              viewBox="0 0 150 40"
+              preserveAspectRatio="none"
+              aria-label="رسم تغير السعر"
+            >
+
+              <polyline
+                points="2,31 14,28 25,30 37,24 48,26 60,21 72,23 84,17 96,20 108,13 120,16 132,9 148,4"
+                fill="none"
+                stroke="#18a957"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+
+            </svg>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="converter-note">
+        1 ل.س قديمة = 1.315 ل.س جديدة
+      </div>
+
+    </section>
   </div>
 
   <script>
