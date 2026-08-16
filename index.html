@@ -147,23 +147,25 @@
   z-index: 0;
 }
 
-.syrian-flag .stars {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  left: 0;
+/* ==============================
+   علم سوريا
+   ============================== */
+
+.syrian-flag {
+  position: relative;
+  width: 108px;
+  height: 72px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.syrian-flag svg {
+  display: block;
   width: 100%;
-  height: 50%;
-  transform: translateY(0);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  color: #fff;
-  font-size: 9px;
-  letter-spacing: 2px;
-  white-space: nowrap;
-  }
+  height: 100%;
+}
   </style>
 </head>
 
@@ -174,11 +176,35 @@
 
   <div class="brand">
 
-    <div class="syrian-flag" aria-label="علم سوريا">
-      <span></span>
-      <span class="stars">★ ★ ★</span>
-      <span></span>
-    </div>
+  <div class="syrian-flag" aria-label="علم سوريا">
+    <svg viewBox="0 0 150 100" role="img" aria-label="علم سوريا">
+
+  <!-- الشريط الأخضر -->
+  <rect x="0" y="0" width="150" height="33.333" fill="#1F8B4C"/>
+
+  <!-- الشريط الأبيض -->
+  <rect x="0" y="33.333" width="150" height="33.333" fill="#FFFFFF"/>
+
+  <!-- الشريط الأسود -->
+  <rect x="0" y="66.666" width="150" height="33.334" fill="#000000"/>
+
+  <!-- النجمة الأولى -->
+  <polygon
+    fill="#CE1126"
+    points="45,50 47.1,54.2 51.8,54.9 48.4,58.2 49.2,62.9 45,60.7 40.8,62.9 41.6,58.2 38.2,54.9 42.9,54.2"/>
+
+  <!-- النجمة الثانية -->
+  <polygon
+    fill="#CE1126"
+    points="75,50 77.1,54.2 81.8,54.9 78.4,58.2 79.2,62.9 75,60.7 70.8,62.9 71.6,58.2 68.2,54.9 72.9,54.2"/>
+
+  <!-- النجمة الثالثة -->
+  <polygon
+    fill="#CE1126"
+    points="105,50 107.1,54.2 111.8,54.9 108.4,58.2 109.2,62.9 105,60.7 100.8,62.9 101.6,58.2 98.2,54.9 102.9,54.2"/>
+
+    </svg>
+  </div>
 
     <div class="brand-name">
       <div class="brand-ar">ليرتي</div>
