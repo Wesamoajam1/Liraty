@@ -670,6 +670,25 @@ body.dark .side-card {
   }
 
 }
+    /* =================================
+   إلغاء الأعمدة الجانبية نهائياً
+   ================================= */
+
+.dashboard-layout {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  width: 100% !important;
+}
+
+.main-column {
+  width: 100% !important;
+  grid-column: 1 / -1 !important;
+}
+
+.left-sidebar,
+.right-sidebar {
+  display: none !important;
+}
     /* إخفاء الأعمدة الجانبية من الصفحة الرئيسية */
 .dashboard-layout {
   display: block !important;
