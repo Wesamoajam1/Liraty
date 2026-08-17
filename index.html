@@ -918,13 +918,793 @@ body.dark .bottom-nav-home .nav-icon {
 body {
   padding-bottom: 78px;
     }
+    /* ========================================
+   LIRATY
+   نبض السوق - التصميم الأساسي
+   ======================================== */
+
+.market-page {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 18px 14px 100px;
+}
+
+/* ===== رأس الصفحة ===== */
+
+.market-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.market-header-info {
+  text-align: right;
+}
+
+.market-title {
+  font-size: 25px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.3;
+}
+
+.market-subtitle {
+  margin-top: 5px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.market-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.market-action {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* ===== حالة الاتصال ===== */
+
+.market-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.market-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #18a957;
+  flex-shrink: 0;
+}
+
+/* ===== الفلاتر ===== */
+
+.market-filters {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.market-filter {
+  min-height: 44px;
+  padding: 7px 8px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: var(--surface);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.market-filter.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+}
+
+/* ===== البحث ===== */
+
+.market-search {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.market-search input {
+  width: 100%;
+  height: 50px;
+  padding: 0 46px 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 25px;
+  outline: none;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 13px;
+}
+
+.market-search input::placeholder {
+  color: var(--text-secondary);
+}
+
+.market-search-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+/* ===== عنوان العملات ===== */
+
+.market-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.market-section-title h2 {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.market-section-title button {
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ===== بطاقات العملات ===== */
+
+.market-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.market-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 150px minmax(110px, 0.8fr);
+  align-items: center;
+  gap: 12px;
+  min-height: 112px;
+  padding: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== معلومات العملة ===== */
+
+.market-currency {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.market-currency-flag {
+  width: 43px;
+  height: 31px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.market-currency-flag svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.market-currency-name {
+  min-width: 0;
+}
+
+.market-currency-name strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.market-currency-code {
+  margin-top: 3px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  direction: ltr;
+}
+
+/* ===== السعر ===== */
+
+.market-price {
+  text-align: left;
+  direction: ltr;
+}
+
+.market-price-value {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.market-price-unit {
+  margin-top: 3px;
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+
+/* ===== التغير ===== */
+
+.market-change {
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.market-change.up {
+  color: #18a957;
+}
+
+.market-change.down {
+  color: #e53935;
+}
+
+.market-change.flat {
+  color: var(--text-secondary);
+}
+
+/* ===== الرسم المصغر ===== */
+
+.market-chart {
+  width: 100%;
+  height: 42px;
+}
+
+.market-chart svg {
+  width: 100%;
+  height: 100%;
+}
+
+.market-chart.up polyline {
+  stroke: #18a957;
+}
+
+.market-chart.down polyline {
+  stroke: #e53935;
+}
+
+.market-chart.up path {
+  fill: rgba(24, 169, 87, 0.10);
+}
+
+.market-chart.down path {
+  fill: rgba(229, 57, 53, 0.10);
+}
+
+/* ===== المفضلة ===== */
+
+.market-favorite {
+  border: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 21px;
+  cursor: pointer;
+}
+
+.market-favorite.active {
+  color: #f2b01e;
+}
+
+/* ===== وقت التحديث ===== */
+
+.market-card-update {
+  margin-top: 3px;
+  font-size: 10px;
+  color: var(--text-secondary);
+  text-align: left;
+}
+
+/* ===== ملخص السوق ===== */
+
+.market-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 18px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.market-summary-item {
+  min-height: 82px;
+  padding: 10px 7px;
+  text-align: center;
+  border-left: 1px solid var(--border);
+}
+
+.market-summary-item:last-child {
+  border-left: none;
+}
+
+.market-summary-label {
+  display: block;
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+
+.market-summary-value {
+  display: block;
+  margin-top: 7px;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.market-summary-value.up {
+  color: #18a957;
+}
+
+.market-summary-value.down {
+  color: #e53935;
+}
+
+/* ===== آخر تحديث ===== */
+
+.market-last-update {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+/* ========================================
+   الوضع الداكن
+   ======================================== */
+
+body.dark .market-action,
+body.dark .market-filter,
+body.dark .market-search input,
+body.dark .market-card,
+body.dark .market-summary {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.20);
+}
+
+/* ========================================
+   الهاتف
+   ======================================== */
+
+@media (max-width: 600px) {
+
+  .market-page {
+    padding: 14px 10px 100px;
+  }
+
+  .market-title {
+    font-size: 23px;
+  }
+
+  .market-subtitle {
+    font-size: 12px;
+  }
+
+  .market-action {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .market-filters {
+    gap: 6px;
+  }
+
+  .market-filter {
+    min-height: 42px;
+    padding: 6px 4px;
+    font-size: 11px;
+  }
+
+  .market-card {
+    grid-template-columns: 1fr 105px;
+    gap: 8px;
+    padding: 12px;
+    min-height: 104px;
+  }
+
+  .market-currency {
+    grid-column: 1;
+  }
+
+  .market-price {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .market-chart {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    height: 34px;
+  }
+
+  .market-favorite {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .market-currency-name strong {
+    font-size: 13px;
+  }
+
+  .market-price-value {
+    font-size: 16px;
+  }
+
+  .market-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .market-summary-item:nth-child(2) {
+    border-left: none;
+  }
+
+  .market-summary-item {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .market-summary-item:nth-child(3),
+  .market-summary-item:nth-child(4) {
+    border-bottom: none;
+  }
+    }
   </style>
 </head>
 
 <body>
 
   <div id="app">
+<!-- ========================================
+     LIRATY
+     نبض السوق
+     ======================================== -->
 
+<section id="market" class="market-page">
+
+  <!-- رأس الصفحة -->
+  <div class="market-header">
+
+    <div>
+      <h1 class="market-title">
+        نبض السوق
+      </h1>
+
+      <p class="market-subtitle">
+        حركة العملات وأسعارها لحظة بلحظة
+      </p>
+    </div>
+
+    <div class="market-status">
+      <span class="market-status-dot"></span>
+      <span>مباشر</span>
+    </div>
+
+  </div>
+
+
+  <!-- العملات المفضلة -->
+  <div class="market-section-title">
+    <h2>المفضلة</h2>
+    <span>آخر تحديث</span>
+  </div>
+
+
+  <div class="market-list">
+
+    <!-- الدولار -->
+    <div class="market-card">
+
+      <div class="market-currency">
+
+        <div class="market-currency-icon">
+          $
+        </div>
+
+        <div>
+          <div class="market-currency-name">
+            الدولار الأمريكي
+          </div>
+
+          <div class="market-currency-code">
+            USD
+          </div>
+        </div>
+
+      </div>
+
+      <div class="market-price">
+        <div class="market-price-value">
+          11,250
+        </div>
+
+        <div class="market-change up">
+          +1.25% ↗
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- اليورو -->
+    <div class="market-card">
+
+      <div class="market-currency">
+
+        <div class="market-currency-icon">
+          €
+        </div>
+
+        <div>
+          <div class="market-currency-name">
+            اليورو
+          </div>
+
+          <div class="market-currency-code">
+            EUR
+          </div>
+        </div>
+
+      </div>
+
+      <div class="market-price">
+        <div class="market-price-value">
+          13,050
+        </div>
+
+        <div class="market-change up">
+          +0.82% ↗
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- الليرة التركية -->
+    <div class="market-card">
+
+      <div class="market-currency">
+
+        <div class="market-currency-icon">
+          ₺
+        </div>
+
+        <div>
+          <div class="market-currency-name">
+            الليرة التركية
+          </div>
+
+          <div class="market-currency-code">
+            TRY
+          </div>
+        </div>
+
+      </div>
+
+      <div class="market-price">
+        <div class="market-price-value">
+          330
+        </div>
+
+        <div class="market-change down">
+          -0.34% ↘
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ملخص السوق -->
+  <div class="market-section-title">
+    <h2>ملخص السوق</h2>
+    <span>اليوم</span>
+  </div>
+
+
+  <div class="market-summary">
+
+    <div class="market-summary-item">
+
+      <span>أعلى ارتفاع</span>
+
+      <strong class="market-summary-value up">
+        +1.25%
+      </strong>
+
+    </div>
+
+
+    <div class="market-summary-item">
+
+      <span>أعلى انخفاض</span>
+
+      <strong class="market-summary-value down">
+        -0.34%
+      </strong>
+
+    </div>
+
+
+    <div class="market-summary-item">
+
+      <span>العملات المراقبة</span>
+
+      <strong class="market-summary-value">
+        3
+      </strong>
+
+    </div>
+
+
+    <div class="market-summary-item">
+
+      <span>حالة السوق</span>
+
+      <strong class="market-summary-value market-open">
+        مفتوح
+      </strong>
+
+    </div>
+
+  </div>
+
+
+  <!-- جميع العملات -->
+  <div class="market-section-title">
+    <h2>الأسواق العالمية</h2>
+    <span>عرض الكل</span>
+  </div>
+
+
+  <div class="market-card market-card-simple">
+
+    <div class="market-currency">
+
+      <div class="market-currency-icon">
+        £
+      </div>
+
+      <div>
+        <div class="market-currency-name">
+          الجنيه الإسترليني
+        </div>
+
+        <div class="market-currency-code">
+          GBP
+        </div>
+      </div>
+
+    </div>
+
+    <div class="market-price">
+
+      <div class="market-price-value">
+        15,100
+      </div>
+
+      <div class="market-change up">
+        +0.41% ↗
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="market-card market-card-simple">
+
+    <div class="market-currency">
+
+      <div class="market-currency-icon">
+        ¥
+      </div>
+
+      <div>
+        <div class="market-currency-name">
+          الين الياباني
+        </div>
+
+        <div class="market-currency-code">
+          JPY
+        </div>
+      </div>
+
+    </div>
+
+    <div class="market-price">
+
+      <div class="market-price-value">
+        76
+      </div>
+
+      <div class="market-change down">
+        -0.18% ↘
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="market-card market-card-simple">
+
+    <div class="market-currency">
+
+      <div class="market-currency-icon">
+        د
+      </div>
+
+      <div>
+        <div class="market-currency-name">
+          الدرهم الإماراتي
+        </div>
+
+        <div class="market-currency-code">
+          AED
+        </div>
+      </div>
+
+    </div>
+
+    <div class="market-price">
+
+      <div class="market-price-value">
+        3,060
+      </div>
+
+      <div class="market-change up">
+        +0.12% ↗
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
   <div class="dashboard-layout">
 
     <!-- ==============================
